@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Name" xml:space="preserve">
-    <value>Ibrahim Khalid</value>
-  </data>
-  <data name="showUS" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="subtitle" xml:space="preserve">
-    <value>ibrahimmkhalid@gmail.com | (510) 470-6616 | github.com/ibrahimmkhalid</value>
-  </data>
 </root>

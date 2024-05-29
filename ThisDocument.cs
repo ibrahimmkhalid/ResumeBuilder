@@ -16,9 +16,70 @@ namespace ResumeBuilder
 {
     public partial class ThisDocument
     {
-        private void ThisDocument_Startup(object sender, System.EventArgs e)
+        private async void ThisDocument_Startup(object sender, System.EventArgs e)
         {
-            // 
+            float inchesPointFive = Application.InchesToPoints(0.5F);
+            this.PageSetup.BottomMargin = inchesPointFive;
+            this.PageSetup.TopMargin = inchesPointFive;
+            this.PageSetup.RightMargin = inchesPointFive;
+            this.PageSetup.LeftMargin = inchesPointFive;
+
+            //Heading
+            object start = 0;
+            object end = 0;
+            Word.Range rng = this.Range(ref start, ref end);
+            rng.Text = Resources.Name;
+            rng.Font.Size = 20;
+            rng.Font.Bold = 1;
+            rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+
+            start = end = rng.End;
+            rng = this.Range(ref start, ref end);
+            string ShowUS = Resources.showUS;
+            if (ShowUS == "1")
+            {
+                rng.Text = " (US Citizen)\n";
+                rng.Font.Size = 7;
+                rng.Font.Bold = 0;
+                rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+            }
+
+            start = end = rng.End;
+            rng = this.Range(ref start, ref end);
+            rng.Text = Resources.subtitle + "\n";
+            rng.Font.Size = 10;
+            rng.Font.Bold = 0;
+            rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+
+            ResumeForm FormData = new ResumeForm();
+            FormData.Show();
+            await FormData.WaitForUser();
+            string resumeType = FormData.resumeType;
+
+            rng = this.AddSection("Education", rng.End, resumeType);
+            rng = this.AddSection("Experiences", rng.End, resumeType);
+            rng = this.AddSection("Projects", rng.End, resumeType);
+
+            //end
+            foreach (Word.Paragraph p in this.Paragraphs)
+            {
+                p.Space1();
+                p.SpaceAfter = 0;
+                p.SpaceBefore = 0;
+                p.Range.Font.Name = "Calibri";
+            }
+        }
+
+        private Word.Range AddSection(string sectionName, int index, string type)
+        {
+            object start = index;
+            object end = index;
+            Word.Range rng = this.Range(ref start, ref end);
+            rng.Text = sectionName + "\n";
+            rng.Font.Size = 14;
+            rng.Font.Bold = 1;
+            rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+            return rng;
         }
 
         private void ThisDocument_Shutdown(object sender, System.EventArgs e)

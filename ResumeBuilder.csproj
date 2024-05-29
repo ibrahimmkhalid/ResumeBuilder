@@ -101,8 +101,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ResumeForm.resx">
+      <DependentUpon>ResumeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Ibrahim Khalid - Resume.docx" />
+    <Compile Include="ResumeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResumeForm.Designer.cs">
+      <DependentUpon>ResumeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThisDocument.cs">
       <DependentUpon>Ibrahim Khalid - Resume.docx</DependentUpon>
     </Compile>

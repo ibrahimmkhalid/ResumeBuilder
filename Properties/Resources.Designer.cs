@@ -77,5 +77,14 @@ namespace ResumeBuilder.Properties {
                 return ResourceManager.GetString("showUS", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ibrahimmkhalid@gmail.com | (510) 470-6616 | github.com/ibrahimmkhalid.
+        /// </summary>
+        internal static string subtitle {
+            get {
+                return ResourceManager.GetString("subtitle", resourceCulture);
+            }
+        }
     }
 }
