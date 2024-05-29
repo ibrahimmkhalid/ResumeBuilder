@@ -13,21 +13,25 @@ namespace ResumeBuilder
     public partial class ResumeForm : Form
     {
         public string resumeType;
+        public bool showUS;
+
+        private string defaultResumeType;
         public ResumeForm()
         {
             InitializeComponent();
             this.resumeType = "";
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.defaultResumeType = comboBox1.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string resumeType = comboBox1.Text;
-            if (resumeType != "")
-            {
-                this.resumeType = resumeType;
-                this.Close();
-            }
+            if (resumeType == this.defaultResumeType) return;
+
+            this.resumeType = resumeType;
+            this.showUS = checkBox1.Checked;
+            this.Close();
         }
 
         public async Task WaitForUser()
@@ -37,11 +41,6 @@ namespace ResumeBuilder
                 await Task.Delay(100);
                 Application.DoEvents();
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

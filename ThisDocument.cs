@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,6 +24,12 @@ namespace ResumeBuilder
             this.PageSetup.RightMargin = inchesPointFive;
             this.PageSetup.LeftMargin = inchesPointFive;
 
+            ResumeForm FormData = new ResumeForm();
+            FormData.Show();
+            await FormData.WaitForUser();
+            string resumeType = FormData.resumeType;
+            bool ShowUS = FormData.showUS;
+
             //Heading
             object start = 0;
             object end = 0;
@@ -35,13 +41,15 @@ namespace ResumeBuilder
 
             start = end = rng.End;
             rng = this.Range(ref start, ref end);
-            string ShowUS = Resources.showUS;
-            if (ShowUS == "1")
+            if (ShowUS)
             {
                 rng.Text = " (US Citizen)\n";
                 rng.Font.Size = 7;
                 rng.Font.Bold = 0;
                 rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+            } else
+            {
+                rng.Text = "\n";
             }
 
             start = end = rng.End;
@@ -51,10 +59,6 @@ namespace ResumeBuilder
             rng.Font.Bold = 0;
             rng.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
 
-            ResumeForm FormData = new ResumeForm();
-            FormData.Show();
-            await FormData.WaitForUser();
-            string resumeType = FormData.resumeType;
 
             rng = this.AddSection("Education", rng.End, resumeType);
             rng = this.AddSection("Experiences", rng.End, resumeType);

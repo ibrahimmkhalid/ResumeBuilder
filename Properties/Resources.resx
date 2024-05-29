@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -119,9 +119,6 @@
   </resheader>
   <data name="Name" xml:space="preserve">
     <value>Ibrahim Khalid</value>
-  </data>
-  <data name="showUS" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="subtitle" xml:space="preserve">
     <value>ibrahimmkhalid@gmail.com | (510) 470-6616 | github.com/ibrahimmkhalid</value>
