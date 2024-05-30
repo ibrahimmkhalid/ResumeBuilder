@@ -115,6 +115,7 @@
     <Compile Include="ThisDocument.cs">
       <DependentUpon>Ibrahim Khalid - Resume.docx</DependentUpon>
     </Compile>
+    <None Include="Properties\education.csv" />
     <None Include="ResumeBuilder_TemporaryKey.pfx" />
     <None Include="ThisDocument.Designer.xml">
       <DependentUpon>ThisDocument.cs</DependentUpon>
