@@ -41,15 +41,15 @@ namespace ResumeBuilder
             this.PageSetup.TopMargin = inchesPointFive;
             this.PageSetup.RightMargin = inchesPointFive;
             this.PageSetup.LeftMargin = inchesPointFive;
+            bool ShowUS = true;
 
-            //ResumeForm FormData = new ResumeForm();
-            //FormData.Show();
-            //await FormData.WaitForUser();
-            //this.resumeType = FormData.resumeType;
-            //bool ShowUS = FormData.showUS;
+            ResumeForm FormData = new ResumeForm();
+            FormData.Show();
+            await FormData.WaitForUser();
+            this.resumeType = FormData.resumeType;
+            ShowUS = FormData.showUS;
 
             this.resumeType = "AI";
-            bool ShowUS = true;
 
             //Heading
             object start = 0;
